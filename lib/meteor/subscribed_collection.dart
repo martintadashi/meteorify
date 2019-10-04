@@ -1,11 +1,12 @@
 import 'package:ddp/ddp.dart';
 
+import '../meteor/meteor.dart';
+
 /// Provides useful methods to read data from a collection on the frontend.
 ///
 /// [SubscribedCollection] supports only read functionality useful in case of getting only the data subscribed by user and not any other data.
 /// To access other methods use `Meteor.getCustomDatabase(dbUrl)` and use the methods of the `Db` class.
 class SubscribedCollection {
-
   /// The internal collection instance.
   Collection _collection;
 
@@ -53,5 +54,17 @@ class SubscribedCollection {
     });
 
     return filteredCollection;
+  }
+
+  /*
+ * Methods related to collections
+ */
+
+  /// Returns a [SubscribedCollection] using the [collectionName].
+  ///
+  /// [SubscribedCollection] supports only read operations.
+  static SubscribedCollection collection(String collectionName) {
+    Collection collection = Meteor.client.collectionByName(collectionName);
+    return SubscribedCollection(collection, collectionName);
   }
 }

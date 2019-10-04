@@ -3,6 +3,9 @@
 /// Connect your web or flutter apps, written in Dart, with the Meteor framework.
 library meteorify;
 
-export 'src/accounts/accounts.dart';
-export 'src/meteor/meteor.dart';
-export 'src/meteor/subscribed_collection.dart';
+export 'meteor/meteor.dart';
+export 'meteor/subscribed_collection.dart';
+export 'accounts/accounts.dart';
+export 'models/document.dart';
+export 'collections/collection.dart';
+
